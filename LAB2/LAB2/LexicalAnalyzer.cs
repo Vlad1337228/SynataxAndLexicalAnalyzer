@@ -245,7 +245,7 @@ namespace LAB2
                 LexicalError("Недопустимый символ или незаконченный токен."); // Обнаружена ошибка в тексте.
 
         B:
-            if(curSymKind == SymbolKind.Space)
+            if(curSymKind == SymbolKind.Space || curSymKind == SymbolKind.EndOfText)
             {
                 goto Fin;
             }
@@ -382,13 +382,15 @@ namespace LAB2
                 else
                     LexicalError("Ожидалась цифра. Незаконченный токен или неправильная цифра.");
             }
-            else
+            else if(curSymKind == SymbolKind.Space || curSymKind == SymbolKind.EndOfText)
             {
                 goto Fin;
             }
+            else
+                LexicalError("Ожидалась цифра. Незаконченный токен или неправильная цифра.");
 
 
-        F:
+            F:
             if (curSymKind == SymbolKind.Digit)
             {
                 if (curSym == '1')

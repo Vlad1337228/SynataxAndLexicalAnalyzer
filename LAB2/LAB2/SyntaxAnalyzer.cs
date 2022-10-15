@@ -104,6 +104,10 @@ namespace LAB2
             {
                 lexAn.RecognizeNextToken();
             }
+            else
+            {
+                SyntaxError("Ожидалась запятая");
+            }
             A();
         }
 
